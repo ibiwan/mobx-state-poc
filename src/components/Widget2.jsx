@@ -1,36 +1,42 @@
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { useRootStore } from "../rootStore";
+import { getSatchelStore } from "../store/satchel";
 import { useStateContext } from "../store/useStateHook";
 
-export const Widget2 = observer(({counterS}) => {
+export const Widget2 = observer(({counterShared}) => {
     const { mobxStore } = useRootStore();
-    const { counterM } = mobxStore;
+    const { counterMobx } = mobxStore;
 
-    const { counterC } = useStateContext();
+    const { counterContext } = useStateContext();
 
-    const [counterL, setCounterL] = useState(0);
+    const [counterLocal, setCounterL] = useState(0);
     const c = () => {
         console.log('incrementing local');
-        setCounterL(counterL + 1);
+        setCounterL(counterLocal + 1);
     };
+
+    const counterSatchel = getSatchelStore().counter
 
     return (
         <div>
             <h1>OUT (Widget2)</h1>
             <div className='display'>
-                mobx store: {counterM}
+                mobx store: {counterMobx}
             </div>
             <div className='display'>
-                shared state: {counterS}
+                shared state: {counterShared}
             </div>
             <div className='display'>
-                context state: {counterC}
+                context state: {counterContext}
+            </div>
+            <div className='display'>
+                satchel state: {counterSatchel}
             </div>
             <div className='display'
                 onClick={c}
             >
-                local hook state: {counterL}
+                local hook state: {counterLocal}
                 <br /><br />
                 <b>click:</b>
                 <br />

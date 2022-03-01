@@ -7,14 +7,14 @@ import './App.css';
 import { StateContextProvider } from './store/useStateHook';
 
 function App() {
-  const [counterS, setCounterS] = useState(0);
+  const [counterShared, setCounterS] = useState(0);
 
-  const incCounterS = useCallback(
+  const incCounterShared = useCallback(
     () => {
       console.log('incrementing shared');
-      setCounterS(counterS + 1);
+      setCounterS(counterShared + 1);
     },
-    [counterS, setCounterS]
+    [counterShared, setCounterS]
   );
 
   return (
@@ -26,8 +26,8 @@ function App() {
         width: '100%',
       }}>
       <StateContextProvider>
-        <Widget1 incCounterS={incCounterS} />
-        <Widget2 counterS={counterS} />
+        <Widget1 incCounterShared={incCounterShared} />
+        <Widget2 counterShared={counterShared} />
       </StateContextProvider>
     </div>
   );

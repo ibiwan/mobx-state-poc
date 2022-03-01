@@ -4,11 +4,11 @@ import {
 
 let mobxStore;
 let initialState = {
-    counterM: 0,
+    counterMobx: 0,
 
-    incCounterM: () => {
+    incCounterMobx: () => {
         console.log("incrementing mobx");
-        mobxStore.counterM += 1;
+        mobxStore.counterMobx += 1;
     },
 };
 

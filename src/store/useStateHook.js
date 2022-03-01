@@ -19,12 +19,12 @@ const useStateContext = () => {
 };
 
 const StateContextProvider = (props) => {
-    const [counterC, setCounterC] = useState(0);
+    const [counterContext, setCounterC] = useState(0);
 
     const inc1CounterC = useCallback(() => {
         console.log("incrementing context");
-        setCounterC(counterC + 1);
-    }, [counterC, setCounterC]);
+        setCounterC(counterContext + 1);
+    }, [counterContext, setCounterC]);
 
     const inc2CounterC = useCallback(() => {
         console.log("incrementing context");
@@ -32,10 +32,10 @@ const StateContextProvider = (props) => {
     }, [setCounterC]);
 
     const providerValue = useMemo(() => ({
-        counterC,
+        counterContext,
         inc1CounterC,
         inc2CounterC,
-    }), [counterC, inc1CounterC, inc2CounterC]);
+    }), [counterContext, inc1CounterC, inc2CounterC]);
 
     return <StateContext.Provider
         value={providerValue}
