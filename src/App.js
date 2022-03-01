@@ -2,6 +2,7 @@ import { Widget1 } from './components/Widget1';
 import { Widget2 } from './components/Widget2';
 
 import './App.css';
+import { StateContextProvider } from './store/useStateHook';
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
         justifyContent: 'space-around',
         width: '100%',
       }}>
-      <Widget1 />
-      <Widget2 />
+      <StateContextProvider>
+        <Widget1 />
+        <Widget2 />
+      </StateContextProvider>
     </div>
   );
 }

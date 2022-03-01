@@ -1,17 +1,46 @@
-import { useState } from "react";
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useMemo,
+    useState,
+} from "react";
 
-export const useStateHook = () => {
-    const [counterS, setCounterS] = useState(0);
+const StateContext = createContext();
 
-    const incCounterS = () => {
-        console.log("incrementing state");
-        setCounterS(counterS + 1);
-    };
+const useStateContext = () => {
+    const context = useContext(StateContext);
 
-    console.log('use', { counterS });
+    if (!context) {
+        throw new Error("need a CountProvider!");
+    }
 
-    return {
-        counterS,
-        incCounterS,
-    };
+    return context;
 };
+
+const StateContextProvider = (props) => {
+    const [counterC, setCounterC] = useState(0);
+
+    const inc1CounterC = useCallback(() => {
+        console.log("incrementing state");
+        setCounterC(counterC + 1);
+    }, [counterC, setCounterC]);
+
+    const inc2CounterC = useCallback(() => {
+        console.log("incrementing state");
+        setCounterC(c => c + 1);
+    }, [setCounterC]);
+
+    const providerValue = useMemo(() => ({
+        counterC,
+        inc1CounterC,
+        inc2CounterC,
+    }), [counterC, inc1CounterC, inc2CounterC]);
+
+    return <StateContext.Provider
+        value={providerValue}
+        {...props}
+    />;
+};
+
+export { StateContextProvider, useStateContext };
