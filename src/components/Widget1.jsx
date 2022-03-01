@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { useRootStore } from "../rootStore";
 import { useStateContext } from "../store/useStateHook";
 
-export const Widget1 = observer(() => {
+export const Widget1 = observer(({ incCounterS }) => {
     const { mobxStore } = useRootStore();
     const { incCounterM } = mobxStore;
 
@@ -19,18 +19,29 @@ export const Widget1 = observer(() => {
                 update mobx store
             </div>
             <div className='incButton'
+                onClick={() => incCounterS()}
+            >
+                <b>click:</b>
+                <br />
+                update shared state
+            </div>
+            <div className='incButton'
                 onClick={() => inc1CounterC()}
             >
                 <b>click:</b>
                 <br />
-                update context state (value form)
+                update context state
+                <br />
+                (value form)
             </div>
             <div className='incButton'
                 onClick={() => inc2CounterC()}
             >
                 <b>click:</b>
                 <br />
-                update context state (cb form)
+                update context state
+                <br />
+                (cb form)
             </div>
         </div>
     );

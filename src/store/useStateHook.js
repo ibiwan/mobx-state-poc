@@ -22,12 +22,12 @@ const StateContextProvider = (props) => {
     const [counterC, setCounterC] = useState(0);
 
     const inc1CounterC = useCallback(() => {
-        console.log("incrementing state");
+        console.log("incrementing context");
         setCounterC(counterC + 1);
     }, [counterC, setCounterC]);
 
     const inc2CounterC = useCallback(() => {
-        console.log("incrementing state");
+        console.log("incrementing context");
         setCounterC(c => c + 1);
     }, [setCounterC]);
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRootStore } from "../rootStore";
 import { useStateContext } from "../store/useStateHook";
 
-export const Widget2 = observer(() => {
+export const Widget2 = observer(({counterS}) => {
     const { mobxStore } = useRootStore();
     const { counterM } = mobxStore;
 
@@ -22,6 +22,9 @@ export const Widget2 = observer(() => {
                 mobx store: {counterM}
             </div>
             <div className='display'>
+                shared state: {counterS}
+            </div>
+            <div className='display'>
                 context state: {counterC}
             </div>
             <div className='display'
@@ -31,7 +34,7 @@ export const Widget2 = observer(() => {
                 <br /><br />
                 <b>click:</b>
                 <br />
-                update local hook:
+                update local hook
             </div>
         </div>
     );
