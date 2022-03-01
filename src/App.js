@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import { Widget1 } from './components/Widget1';
+import { Widget2 } from './components/Widget2';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="App"
+      style={{
+        display: 'flex',
+        justifyContent: 'space-around',
+        width: '100%',
+      }}>
+      <Widget1 />
+      <Widget2 />
     </div>
   );
 }

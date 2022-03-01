@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.incButton {
+  border: 1px solid black;
+  height: 100px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.display {
+  border: 1px solid black;
+  height: 100px;
+  width: 200px;
+}
